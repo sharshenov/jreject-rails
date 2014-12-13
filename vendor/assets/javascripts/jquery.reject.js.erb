@@ -94,7 +94,8 @@ $.reject = function(options) {
 		},
 
 		// Path where images are located
-		imagePath: "<%= image_path('jreject/background_browser.gif').gsub /background_browser\.gif.*/, '' %>",
+		assetToken: "<%= image_path('jreject/background_browser.gif').scan(/background_browser([^\.]*)/).flatten.first %>",
+		imagePath: "<%= image_path('jreject/background_browser.gif').gsub /background_browser.*/, '' %>",
 		// Background color for overlay
 		overlayBgColor: '#000',
 		// Background transparency (0-1)
@@ -364,7 +365,7 @@ $.reject = function(options) {
 	});
 
 	element.find('#jr_inner li').css({ // Browser list items (li)
-		background: 'transparent url("'+opts.imagePath+'background_browser.gif") '+
+		background: 'transparent url("'+opts.imagePath+'background_browser' + (opts.assetToken ? "-" + opts.assetToken : "") + '.gif") '+
 					'no-repeat scroll left top'
 	});
 
@@ -372,7 +373,7 @@ $.reject = function(options) {
 		// Dynamically sets the icon background image
 		var self = $(this);
 		self.css('background','transparent url('+opts.imagePath+'browser_'+
-				(self.parent('li').attr('id').replace(/jr_/,''))+'.gif)'+
+				(self.parent('li').attr('id').replace(/jr_/,''))+ (opts.assetToken ? "-" + opts.assetToken : "") +'.gif)'+
 					' no-repeat scroll left top');
 
 		// Send link clicks to openBrowserLinks
