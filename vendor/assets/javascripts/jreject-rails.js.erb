@@ -1,0 +1,46 @@
+//= require jquery.reject
+
+(function($) {
+$.rejectRails = function(options) {
+  var opts = $.extend(true, {
+    browserInfo: { // Settings for which browsers to display
+      chrome: {
+        // Text below the icon
+        text: 'Google Chrome',
+        // URL For icon/text link
+        url: 'http://www.google.com/chrome/',
+        // Custom browser icon url
+        iconUrl: "<%= asset_url('jreject/browser_chrome.gif') %>"
+        // (Optional) Use "allow" to customized when to show this option
+        // Example: to show chrome only for IE users
+        // allow: { all: false, msie: true },
+      },
+      firefox: {
+        text: 'Mozilla Firefox',
+        url: 'http://www.mozilla.com/firefox/',
+        iconUrl: "<%= asset_url('jreject/browser_firefox.gif') %>"
+      },
+      safari: {
+        text: 'Safari',
+        url: 'http://www.apple.com/safari/download/',
+        iconUrl: "<%= asset_url('jreject/browser_safari.gif') %>"
+      },
+      opera: {
+        text: 'Opera',
+        url: 'http://www.opera.com/download/',
+        iconUrl: "<%= asset_url('jreject/browser_opera.gif') %>"
+      },
+      msie: {
+        text: 'Internet Explorer',
+        url: 'http://www.microsoft.com/windows/Internet-explorer/',
+        iconUrl: "<%= asset_url('jreject/browser_msie.gif') %>"
+      }
+    },
+
+    // Custom background image url
+    backgroundImageUrl: "<%= asset_url('jreject/background_browser.gif') %>"
+  }, options);
+
+  $.reject(opts);
+};
+})(jQuery);

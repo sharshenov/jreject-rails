@@ -19,7 +19,7 @@ Or install it yourself as:
 Now you need to edit your app/assets/javascripts/application.js file and add the following line:
 ``` javascript
 //= require jquery
-//= require jquery.reject
+//= require jreject-rails
 ```
 
 And then edit your `app/assets/stylesheets/application.css` file to look something like:
@@ -36,7 +36,7 @@ And then edit your `app/assets/stylesheets/application.css` file to look somethi
 With the gem installed and included in your asset manifests, you can now use JReject as you normally would.
 
 ``` javascript
-$.reject();
+$.rejectRails();
 ```
 
 ## Contributing
